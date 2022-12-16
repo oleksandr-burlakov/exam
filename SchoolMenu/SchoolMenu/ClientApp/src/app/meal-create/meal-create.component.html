@@ -1,0 +1,26 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" id="price" name="price" formControlName="price">
+        </div>
+        <div class="form-group">
+            <label for="recipe">Recipe:</label>
+            <textarea class="form-control" id="recipe" name="recipe" formControlName="recipe">
+            </textarea>
+        </div>
+        <div class="form-group">
+            <h4>Products:</h4>
+            <div class="d-flex flex-column">
+                <label *ngFor="let product of (products | async)"><input type="checkbox" (change)="onChange(product.id, $event)" [value]="product.id">{{product.name}}</label>
+            </div>
+        </div>
+        <div class="form-group mt-2">
+            <button class="btn btn-primary" [disabled]="!this.form.valid">Add</button>
+        </div>
+    </form>
+</div>

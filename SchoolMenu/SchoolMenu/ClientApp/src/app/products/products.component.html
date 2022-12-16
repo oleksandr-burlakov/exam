@@ -1,0 +1,44 @@
+<div>
+    <div class="d-flex justify-content-between">
+        <h3>Products:</h3>
+        <a href="#" class="link-primary" (click)="getBack($event)">Back</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price ($)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of (products | async)">
+                <td>{{ product.name }}</td>
+                <td>{{ product.productPrice }}</td>
+                <td>
+                    <div class="d-flex justify-contet-end">
+                        <button class="btn btn-danger me-3" (click)="delete(product.id)">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name">
+                </td>
+                <td>
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" class="form-control" [(ngModel)]="price">
+                </td>
+                <td>
+                    <label></label>
+                    <div class="d-grid">
+                        <button class="btn btn-primary" (click)="add()">Add</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

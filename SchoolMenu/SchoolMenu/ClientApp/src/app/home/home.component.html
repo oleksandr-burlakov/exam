@@ -1,0 +1,6 @@
+<div class="d-flex flex-column justify-content-center">
+  <div *ngIf="this.menu">
+    <h3 class="card-title text-center">{{ this.menu.name}}</h3>
+    <a [routerLink]="['/menu', this.menu.id]" class="btn btn-primary">Menu</a>
+  </div>
+</div>

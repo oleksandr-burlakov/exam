@@ -1,0 +1,51 @@
+<div>
+    <div class="title d-flex justify-content-between">
+        <h3>
+            Menu days:
+        </h3>
+        <div class="links">
+            <a href="#"> Menu </a>
+            <a href="/products"> Products </a>
+        </div>
+    </div>
+    <table class="table" style="min-width: 30em">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dayMenu of (this.dayMenus | async)">
+                <td>
+                    <a href="/day-menu/{{dayMenu.id}}" class="fs-3">{{ dayMenu.weekName }}</a>
+                </td>
+                <td>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-danger me-3" (click)="delete(dayMenu.id)">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <select class="form-select" [(ngModel)]="daySelect">
+                        <option value="0" selected>Monday</option>
+                        <option value="1">Tuesday</option>
+                        <option value="2">Wednesday</option>
+                        <option value="3">Thursday</option>
+                        <option value="4">Friday</option>
+                        <option value="5">Saturday</option>
+                        <option value="6">Sunday</option>
+                    </select>
+                </td>
+                <td>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-success" (click)="addNewMenu()">Add</button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
